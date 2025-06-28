@@ -67,6 +67,7 @@ services:
       - shared_rabbitmq
       - shared_prometheus
       - backoffice_elasticsearch
+    # Expose the Symfony server on all container interfaces
     command: symfony serve --dir=apps/backoffice/backend/public --port=8040 --allow-all-ip
 
   backoffice_frontend_php:
@@ -86,6 +87,7 @@ services:
       - shared_prometheus
       - backoffice_elasticsearch
       - mooc_mysql
+    # Expose the Symfony server on all container interfaces
     command: symfony serve --dir=apps/backoffice/frontend/public --port=8041 --allow-all-ip
 
   mooc_backend_php:
@@ -104,4 +106,5 @@ services:
       - shared_rabbitmq
       - shared_prometheus
       - mooc_mysql
+    # Expose the Symfony server on all container interfaces
     command: symfony serve --dir=apps/mooc/backend/public --port=8030 --allow-all-ip
