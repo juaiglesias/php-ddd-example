@@ -26,7 +26,7 @@ mess-detector:
 
 start:
 	@if [ ! -f .env.local ]; then echo '' > .env.local; fi
-	UID=${shell id -u} GID=${shell id -g} docker compose up --build -d
+	UID=${shell id -u} GID=${shell id -g} docker compose up --build
 	make clean-cache
 
 stop:
@@ -52,3 +52,6 @@ ping-rabbitmq:
 clean-cache:
 	@rm -rf apps/*/*/var
 	@docker exec codely-php_ddd_skeleton-mooc_backend-php ./apps/mooc/backend/bin/console cache:warmup
+
+
+build: composer-install start
